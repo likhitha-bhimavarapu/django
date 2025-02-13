@@ -1,0 +1,133 @@
+{% extends "users/base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block content %}
+{% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Card Styling */
+        .info-card {
+            border: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Image Hover Effect */
+        .image-hover {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .image-hover img {
+            transition: opacity 0.3s ease;
+            width: 100%;
+            height: auto;
+        }
+        
+        .image-hover img.hover-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .image-hover:hover img.default-image {
+            opacity: 0;
+        }
+
+        .image-hover:hover img.hover-image {
+            opacity: 1;
+        }
+
+        /* Typography */
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        p {
+            font-family: 'Arial', sans-serif;
+        }
+        body{
+            margin-top:150px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container my-5">
+<h2 style="color:rgb(86, 195, 214)">About Us</h2>
+        <div class="container col-md-12 ">
+            <div class="info-card p-4 shadow-sm">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        
+                        <p>Linkmein, is a Training and development and a software services company incorporated in Hyderabad. We have been providing Application Development & Managed Services, E-Commerce Solutions, BPO and Professional Training & Consulting Services in Hyderabad, India.
+
+                        We have been delivering services ranging from maintenance of existing applications to full life-cycle development of enterprise-wide business applications to the satisfaction of our customers competitively. With our technical teams at our development and delivery centers in India, you can bank on us to develop, integrate and manage applications across the enterprise, from legacy to Internet technologies there by delivering high value solution to our clients.</p>
+                    </div>
+                    <div class="col-md-6 image-hover">
+                        <!-- Default Image -->
+                        <img src="{% static 'images/about2.jpg'%}" alt="Default Image" class="default-image img-fluid">
+                        <!-- Hover Image -->
+                        <img src="{% static 'images/about3.jpg'%}" alt="Hover Image" class="hover-image img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- First Row -->
+    <div class="row mb-4">
+        <div class="col-md-12 mt-5">
+            <div class="info-card p-4 shadow-sm">
+                <div class="row align-items-center">
+                    <div class="col-md-6 image-hover">
+                        <!-- Default Image -->
+                        <img src="{% static 'images/about.jfif' %}" alt="Default Image" class="default-image img-fluid">
+                        <!-- Hover Image -->
+                        <img src="{% static 'images/about1.jpeg' %}" alt="Hover Image" class="hover-image img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <h2>Our Promise</h2>
+                        <p>"‘Designing Tomorrow Together’ reflects our commitment to building a better future through innovation and collaboration. This brand promise encompasses our vision of continuous growth and improvement, as we strive to expand our expertise and capabilities in various areas. By embracing cutting-edge technology solutions, we aim to stay ahead of industry trends, enabling us to provide top-tier services and solutions to our clients.
+
+                            Our focus is not only on delivering immediate value but also on fostering long-term, sustainable relationships. We empower our employees to bring their best to each project, fostering a culture of excellence and creativity."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+ {% comment %} Profile Model View {% endcomment %}
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" id="profileModalLabel">Profile Details</h5>
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+       <h2>Welcome, {{ user.username }}</h2>
+       <p>Email: {{ user.email }}</p>
+     </div>
+     <div class="modal-footer">
+       <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+     </div>
+   </div>
+  </div>
+  </div>
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "users/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block content %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tt th{
+            background-color: black;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">My Orders</h2>
+    
+        {% if purchases %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle text-center shadow-sm">
+                <thead>
+                    <tr class="tt">
+                        <th>#</th>
+                        <th>Project Name</th>
+                        <th>Category</th>
+                        <th>Price (₹)</th>
+                        <th>Order ID</th>
+                        <th>Payment ID</th>
+                        <th>Purchased Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for purchase in purchases %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ purchase.project.project_name }}</td>
+                        <td class="text-capitalize">{{ purchase.project.category }}</td>
+                        <td>₹ {{ purchase.project.amount }}</td>
+                        <td>{{ purchase.order_id }}</td>
+                        <td>{{ purchase.razorpay_payment_id }}</td>
+                        <td>{{ purchase.created_at|date:"d M Y, H:i" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center mt-5">
+            <h3 class="text-danger">No purchases found.</h3>
+            <h5 class="text-primary">Please visit the <a href="{% url 'allprojects' %}" class="text-decoration-none text-primary fw-bold">Projects Page</a> to buy projects.</h5>
+        </div>
+        {% endif %}
+    </div>
+    {% endblock %}
+</body>
+</html>
+
+
+
+
+
+

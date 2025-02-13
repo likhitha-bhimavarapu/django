@@ -1,0 +1,427 @@
+{% extends "users/base.html"%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+  {% block content %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <title>Home</title>
+  
+    <style>
+    
+   
+      .acce{
+        text-align: center;
+        
+      }
+      #adv{
+        text-align: center;
+      }
+      #idea{
+        background-color:rgb(244, 233, 233);
+        padding:15px;
+        border-radius:10px;
+      }
+      #back{
+        background-color: rgb(107, 166, 249);
+        padding:30px;
+        border-radius:10px;
+      }
+      #pay{
+       background-color:rgb(244, 233, 233);
+        text-align: center;
+        padding:25px;
+        border-radius:5px;
+        margin:50px 0px 50px 80px;
+
+      }
+      
+      #amount h4{
+        color:rgb(234, 65, 155);
+        font-weight: bold;
+      }
+      #pay a{
+        text-decoration:none;
+        background-color: rgb(227, 154, 36);
+        color:white;
+        padding:10px;
+        width:fit-content;
+        font-weight: bold;
+      }
+      #cash{
+        font-size:20px;
+      }
+      .bor{
+        border:3px 1px 1px 1px solid green;
+      }
+@media only screen and (max-width: 320px) {
+  #hoimg {
+    height: 260px;
+    width: fit-content;
+    margin-left: -80px;
+  }
+  #pay{
+    margin: 50px 0px 50px 0px;
+  }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 426px) {
+  body {
+    background-color: lightblue;
+  }
+}
+.course{
+  width: fit-content;
+}
+.stream{
+  background-color:rgb(244, 206, 118);
+  padding: 15px;
+  width: fit-content;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.stream:hover{
+  background-color:rgb(243, 230, 131);
+}
+.stream a:hover{
+  background-color:rgb(243, 230, 131);
+}
+.edu{
+  text-align: center;
+}
+.adj{
+  text-align: center;
+  text-decoration: none;
+}
+.aa{
+  display:flex;
+  text-align: center;
+  gap:20px;
+}
+.bord{
+  background-color: rgb(107, 166, 249);
+  padding:10px;
+  border-radius: 10px;
+  color:white;
+}
+.bt a{
+  background-color: rgb(212, 227, 127);
+  padding:25px;
+  border-radius: 10px;
+  color:white;
+  text-decoration: none;
+  margin-top:20px;
+}
+</style>
+</head>
+<body>
+   
+
+<div class="row m-5">
+<div class="col-sm-6 mt-5">
+    <h1>Learning for Every Step of<span id="tex">  your Career </span></h1><br>
+    <p>Fulfil your aspirations and transform your life with one of India’s leading learning platforms.</p>
+    <br>
+    <div class="aa" >
+      <div class="bord" >
+        <h4>Thousands</h4>
+        <p>Of learners Empowered</p>
+      </div>
+      <div class="bord">
+        <h4>Top-Notch</h4>
+        <p>Academic Network</p>
+      </div>
+      <div class="bord">
+        <h4>Legacy</h4>
+        <p>Linkmein Group</p>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+    <div class="course col-md-6">
+    <br>
+      <span class="bt m-3"><a href="#"><b>Choose The Right Course</b></a><span>
+    </div>&emsp;
+    <div class="stream col-md-6">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           <b>Choose Your Stream</b>
+         </a>
+         <ul class="dropdown-menu">
+           <li><a class="dropdown-item" href="#">CSE</a></li>
+           <li><a class="dropdown-item" href="#">ECE</a></li>
+           <li><a class="dropdown-item" href="#">CIVIL</a></li>
+           <li><a class="dropdown-item" href="#">EEE</a></li>
+           <li><a class="dropdown-item" href="#">MECHANICAL</a></li>
+           
+         </ul>
+    </div>
+  </div>
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="profileModalLabel">Profile Details</h5>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <div class="modal-body">
+         <h2>Welcome, {{ user.username }}</h2>
+         <p>Email: {{ user.email }}</p>
+       </div>
+       <div class="modal-footer">
+         <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       </div>
+     </div>
+    </div>
+    </div>
+</div>
+<div class="col-sm-6 mt-5">
+   <img id="hoimg" height="450px" width="600px" src="{% static 'images/grow.webp' %}">
+</div>
+</div>
+   <hr class="line">
+
+<div class="edu mt-5">
+  <h5 style="color: blue"><b>Top Category</b></h5>
+  <h1>Explore 100+ online courses along <br> with Realtime Projects</h1>
+  <p style="color: rgb(51, 133, 248);">You'll find something to spark your curiosity and enhance</p>
+</div>
+
+<div class="row m-5" style="justify-content:space-evenly;">
+
+<div class="card col-md-4" style="width: 18rem;">
+  <img height="100px" src="{% static 'images/cat1.svg' %}">
+  <a class="adj" href ="/sorry/">
+  <div class="card-body"> 
+    <h4>Online <br> Courses</h4>
+    <div>
+  
+    </div>
+  </div>
+  </a>
+  </div>
+  <div class="card col-md-4" style="width: 18rem;">
+  <img height="100px" src="{% static 'images/cat2.svg' %}">
+  <a class="adj" href ="/allprojects/">
+  <div class="card-body">
+   <h4>Academic <br> Projects<h4>
+    {% comment %} <p>100+ Courses</p> {% endcomment %}
+  </div>
+  </a>
+</div>
+
+{% comment %} <div class="card col-3" style="width: 18rem;">
+  <img height="100px" src="{% static 'images/cat3.svg' %}">
+  <a class="adj" href ="">
+  <div class="card-body">
+    <h4>Documnentation And Source Code<h4>
+    
+  </div>
+  </a>
+</div> {% endcomment %}
+<div class="card col-md-4" style="width: 18rem;">
+  <img height="100px" src="{% static 'images/a4.svg' %}">
+  <a class="adj" href ="/sorry/">
+  <div class="card-body">
+    <h4>B.Tech/MBA/MCA Tutorials<h4>
+    {% comment %} <p>80+ Courses</p> {% endcomment %}
+  </div>
+  </a>
+</div>
+</div>
+
+<div class="edu mt-5">
+  <h5 style="color: blue"><b><i class="fa-solid fa-graduation-cap"></i> Courses</b></h5>
+  <h1>Explore Featured Courses</h1>
+  <p style="color: rgb(51, 133, 248);">You'll find something to spark your curiosity and enhance</p>
+</div>
+
+
+<div class="row container-fluid" id="wr" >
+  <div class="col-md-3">
+    <div class="card" style="width: 18rem;">
+ <img src="{% static 'images/cat5.webp' %}">
+  <div class="card-body">
+    <a href=""><h6 id="aa">Web development</h6></a> <br>
+    <i class="fa-solid fa-book"></i> 25 Lessons <br><br>
+    <i class="fa-regular fa-user"></i> 52 students<br><br>
+    <a href=""><h6>The Complete Web Development 2024</h6></a><br>
+    4.4 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+    <br><br><i class="fa-solid fa-indian-rupee-sign"></i> 40,000
+  </div>
+</div>
+  </div>
+
+  <div class="col-md-3" >
+    <div class="card" style="width: 18rem;">
+ <img src="{% static 'images/cat6.webp' %}">
+  <div class="card-body">
+    <a href=""><h6 id="aa">Design(UI/UX)</h6></a> <br>
+    <i class="fa-solid fa-book"></i> 18 Lessons <br><br>
+    <i class="fa-regular fa-user"></i> 32 students<br><br>
+    <a href=""><h6>User Experience Usability <br> and UX</h6></a><br>
+    4.5 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+    <br><br><i class="fa-solid fa-indian-rupee-sign"></i> 25,000
+  </div>
+</div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card" style="width: 18rem;">
+ <img src="{% static 'images/cat7.webp' %}">
+  <div class="card-body">
+    <a href=""><h6 id="aa">Academic Projects</h6></a> <br>
+    <i class="fa-solid fa-book"></i> 41 projects <br><br>
+    <i class="fa-regular fa-user"></i> 41 students<br><br>
+    <a href=""><h6>Web <br> Development </h6></a><br>
+    4.5 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+    <br><br><i class="fa-solid fa-indian-rupee-sign"></i> 30,000
+  </div>
+</div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card" style="width: 18rem;">
+ <img height="190px" src="{% static 'images/cat8.webp' %}">
+  <div class="card-body">
+    <a href=""><h6 id="aa">Marketing (MBA)</h6></a> <br>
+    <i class="fa-solid fa-book"></i> 26 Lessons <br><br>
+    <i class="fa-regular fa-user"></i> 30 students<br><br>
+    <a href=""><h6>The Complete Market Stratagies Program 2024</h6></a><br>
+    4.6 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+    <br><br><i class="fa-solid fa-indian-rupee-sign"></i> 35,000
+  </div>
+</div>
+</div>
+</div>
+<div>
+</div>
+</div>
+
+<div class="acce mt-5">
+  <h1 style="color: rgb(57, 136, 248);"><b>Invest in your career with Linkmein Study hub</b></h1>
+  <p>Get access to videos in over 90% of courses, Specialization, and professional certificates taught by <br> top instructors from leading Universities and Companys.</p>
+</div>
+
+<div class="container mt-5" id="idea">
+  <div class="row" id="adv">
+    <div class="col-md-3">
+      <img height="100px"  src="{% static 'images/lear1.png' %}">
+      <h5>Learn Anything</h5>
+      <p>Explore any interest or trending topic, take prerequisites, and advance your skills</p>
+    </div>
+
+     <div class="col-md-3">
+      <img height="100px"  src="{% static 'images/save1.png' %}">
+      <h5>Save Money</h5>
+      <p>Spend less money on your learning if you plan to take multiple courses this year</p>
+    </div>
+
+     <div class="col-md-3">
+      <img height="100px"  src="{% static 'images/learn1.png' %}">
+      <h5>Flexible Learning</h5>
+      <p>Learn at your own pace, move between multiple courses, or switch to a different course</p>
+    </div>
+
+     <div class="col-md-3">
+      <img height="100px"  src="{% static 'images/cert1.png' %}">
+      <h5>Unlimited Certificates</h5>
+      <p>Earn a certificate for every learning program that you complete at no additional cost</p>
+    </div>
+  </div>
+</div>
+
+{% comment %} <div class="mt-5">
+  <div class="row" id="amount">
+  <h2 class="mt-5" style="text-align:center; color: rgb(171, 95, 243);font-weight: bold;">Choose the plan that's right for your career goals</h2>
+    <div class="col-md-3" id="pay">
+      <h4>Single Learning <br> Program</h4>
+      <p>Learn a single topic or skill and <br>learn earn a credential</P>
+     <h2> <i class="fa-solid fa-indian-rupee-sign"></i>5000-7500</h2>
+     <h6>/month</h6><br>
+     <a href="">Start Subscription  <i class="fa-solid fa-arrow-right"></i></a><br><br>
+    <p>Visit an individual course or <br> Specialization page to purchase.</p>
+    <br>
+    <hr>
+    <p>Access all courses within the<br> learning program</p>
+    <hr>
+    <p>Earn a certificate upon <br> completion</p>
+    </div>
+
+     <div class="col-md-3" id="pay">
+      <h4>Linkmein Monthly Program</h4>
+      <p>Complete multiple courses and earn <br> credentials in the short term</P>
+     <h3> <i class="fa-solid fa-indian-rupee-sign"></i>6021 /month</h3> <br>
+     <a href="">Start 7-day free trail</a><br><br>
+    <p>Cancel Anytime</p>
+    <br>
+    <hr>
+    <p>Access 7,000+ courses and Specializations from 170+ leading companies and universities</p>
+    <hr>
+    <p>Earn unlimited certificates</p>
+    </div>
+
+     <div class="col-md-3 bor" id="pay">
+      <h4>Linkmein Annual Program</h4>
+      <p>Combine flexibility and savings with <br> long-term learning goals</P>
+     <h3> <i class="fa-solid fa-indian-rupee-sign"></i>39800 /year</h3>
+     <h5></h5><br>
+     <a href="">Try Linkmein Annual</a><br><br>
+    <p>14-day money-back gurantee</p>
+    <br>
+    <hr>
+    <p>Save when you pay up front<br> for the year</p>
+    <hr>
+    <p>Enjoy maximum flexibility to <br> achieve work/life balance and <br> learn at your own pace</p>
+    <hr>
+    <p>Learn job-relevant skills and tools with 1,000+ applied projects and hands-on labs from industry experts</p>
+    
+    </div>
+  </div>
+</div> {% endcomment %}
+
+
+<div class="container mt-5" id="back">
+<div class="row" >
+<div class="col-md-6">
+  <h1>Connect with us</h1>
+  <p>Just share your details and we will contact you at your convenience.</p>
+  <a style="text-decoration:none; color:white; background-color:rgb(66, 66, 244); padding:10px; border-radius:5px;" href="/contact/">Request a Callback <i class="fa-solid fa-angle-right"></i></a>
+</div>
+  <div class="col-md-6">
+    <img class="mx-5" height="200px" src="{% static 'images/call.png' %}">
+  </div>
+</div>
+</div>
+
+
+{% comment %} 
+<script>
+  // Get the counter element
+  const counterElement = document.querySelector('.counter');
+  
+  // Function to update the counter
+  function updateCounter() {
+    let count = 0;
+    const interval = setInterval(() => {
+      counterElement.textContent = count + '+ Courses';
+      count++;
+      if (count > 130) {
+        clearInterval(interval);
+      }
+    }, 5); // Update every 50 milliseconds
+  }
+
+  // Call the updateCounter function
+  updateCounter();
+</script> {% endcomment %}
+
+{% endblock %}
+</body>
+</html>

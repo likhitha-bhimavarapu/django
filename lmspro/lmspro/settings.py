@@ -10,13 +10,27 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-from pathlib import Path
 import os
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+from pathlib import Path
+import dj_database_url
+import os
+DATABASES = {
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+}
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  
+]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+import os
+ 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -80,10 +94,10 @@ WSGI_APPLICATION = 'lmspro.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'LMS',
-        'USER': 'postgres',
-        'PASSWORD': 'Uday@1299',
-        'HOST': 'localhost',  # Use 'localhost' if running locally
+        'NAME': 'likhi',
+        'USER': 'likhi_user',
+        'PASSWORD': 'FFrqBYveO1RXCb9QRHFDgqLA4CJaHLY7',
+        'HOST': 'dpg-cvh3fv2qgecs73cn2b8g-a',  # Use 'localhost' if running locally
         'PORT': '5432',       # Default PostgreSQL port
     }
 }
